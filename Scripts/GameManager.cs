@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]public bool terminado = false; // Determina si el jugador termino su mano actual
 
     [Header("Rival")]
+    private RivalManager rival; // Rival actual
     private int puntosRival = 0; // Puntos del rival
     private Carta[] cartasRival; // Cartas del rival
 
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     public int ptsParaGanar = 30; // Puntos necesarios para ganar
     public bool mano; // Mano actual (true -> Jugador || false -> Rival)
     private int truco = 0;
+    private int envido = 0;
 
     private void Awake()
     {
@@ -38,11 +40,17 @@ public class GameManager : MonoBehaviour
         StartCoroutine(JugarRonda());
     }
 
+    public void SetRival(RivalManager rival)
+    {
+        this.rival = rival;
+    }
+
     IEnumerator JugarRonda()
     {
         // cartasJugador, cartasRival = ReglasTruco.RepartirCartas();
         ronda = 1;
         truco = 0;
+        envido = 0;
 
         while(ronda <= 3)
         {
@@ -56,6 +64,8 @@ public class GameManager : MonoBehaviour
 
             Jugar();
             while (mano && !terminado) yield return new WaitForEndOfFrame();
+
+            // mano = ReglasTruco.GanadorRonda(cartasJugador, cartasRival, ronda);
 
             ronda++;
         }
@@ -77,7 +87,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-
+            if (rival != null) rival.Jugar();
         }
     }
 
@@ -86,9 +96,16 @@ public class GameManager : MonoBehaviour
         terminado = true;
     }
 
-    public void Truco()
+    public void TrucoJugador()
     {
         truco++;
+        if (rival != null) rival.Truco(truco);
+    }
+
+    public void EnvidoJugador()
+    {
+        envido++;
+        if (rival != null) rival.Envido(envido);
     }
 
 }

@@ -446,7 +446,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 881217464}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: FinTurnoJugador
+        m_MethodName: TrucoJugador
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -458,7 +458,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 881217464}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Truco
+        m_MethodName: FinTurnoJugador
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -782,6 +782,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 881217464}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: EnvidoJugador
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &822109284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,9 +877,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terminado: 0
-  ronda: 0
+  ronda: 1
   ptsParaGanar: 30
-  mano: 0
+  mano: 1
 --- !u!1 &888526428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1660,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0.5
+  m_MatchWidthOrHeight: 0.75
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
